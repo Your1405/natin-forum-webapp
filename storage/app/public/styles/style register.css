@@ -1,0 +1,7 @@
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(#B89E77, #d0d3ce);
+    position: relative;
+    background-size: cover;
+}
