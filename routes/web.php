@@ -27,3 +27,5 @@ Route::get('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
+Route::get('/new/user', [PageController::class, 'newUser']);
+Route::get('/new/post');
