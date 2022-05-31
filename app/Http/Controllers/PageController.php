@@ -11,4 +11,8 @@ class PageController extends Controller
         $password = $request->input('password');
         return view('home')->with('username', $username)->with('password', $password);
     }
+
+    function newUser(){
+        return view('newuser');
+    }
 }

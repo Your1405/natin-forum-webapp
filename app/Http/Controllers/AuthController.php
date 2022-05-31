@@ -12,7 +12,16 @@ class AuthController extends Controller
         if($request->isMethod('post')){
             $username = $request->input('username');
             $password = $request->input('password');
-            return view('home')->with('username', $username)->with('password', $password);
+
+            if($username == 'your1405'){
+                if($password == 'password'){
+                    return redirect('home');
+                } else {
+                    return view('login', ['loginError'=>'password']);
+                }
+            } else {
+                return view('login', ['loginError'=>'username']);
+            }
         } else if($request->isMethod('get')){
             return view('login');
         }
