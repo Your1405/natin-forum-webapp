@@ -24,11 +24,11 @@
             <form method="GET" action="/newpost">
             <button type="submit">New Post</button>
             </form>
-            <form method="GET" action="/login">
-            <button class="logregbutton" type="submit">Login/Register</button>
-            </form>
+            <a href="/logout" class="logregbutton">Uitloggen</a>
         </nav>
     </div>
-
+    <main>
+        <p>user id: {{ $userId }}</p>
+    </main>
 </body>
 </html>
