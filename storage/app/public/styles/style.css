@@ -9,17 +9,18 @@
 .login-container {
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(natinstuds.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/storage/images/natinstuds.jpg');
     background-position: center;
     position: absolute;
     background-size: cover;
 }
+
 .loginbox{
     width: 380px;
     height: 480px;
     position: relative;
     margin: 6% auto;
-    background: #C4C4C4;
+    background: #DDD;
     padding: 5px;
     overflow: hidden;
     
@@ -86,7 +87,7 @@
     padding: 10px 30px;
     cursor: pointer;
     display: block;
-    margin: auto;
+    margin: 1em auto;
     background: linear-gradient(to right, #5DA132,#10370F);
     border: 0;
     outline: none;
