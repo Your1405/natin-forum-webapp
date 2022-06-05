@@ -23,7 +23,7 @@ class AuthController extends Controller
                 return view('login', ['loginError'=>'username']);
             }
         } else if($request->isMethod('get')){
-            return view('login');
+            return view('login', ['loginError'=>null]);
         }
     } 
 
