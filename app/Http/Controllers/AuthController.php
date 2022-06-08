@@ -8,6 +8,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 
+use App\Models\User;
+
 class AuthController extends Controller
 {
     function login(Request $request){
@@ -19,7 +21,6 @@ class AuthController extends Controller
             if(sizeof($userInfo) > 0) {
                 $userInfoArray = json_decode(json_encode($userInfo[0]), true);
                 if(Hash::check($password, $userInfoArray['password'])){
-                    var_dump($userInfo);
 
                     $request->session()->put([
                         'userId'=>$userInfoArray['userId'], 
@@ -85,14 +86,20 @@ class AuthController extends Controller
                         'accountStatus'=>1
                     ]);
     
-                    $userId = 0;
-    
+                    $userIdArray = DB::table('user')->select(['userId','username', 'email'])
+                    ->where('username', '=', $username)
+                    ->orWhere('email', '=', $email)
+                    ->get()
+                    ->toArray();
+
+                    $userId = json_decode(json_encode($userIdArray[0]), true);
+
                     session([
                         'isLoggedIn'=>true,
-                        'userId'=>$userId
+                        'userId'=>$userId['userId']
                     ]);
     
-                    return redirect('/home'); 
+                    return redirect('/user/new'); 
                 }
             }
         } else if($request->isMethod('get')){
