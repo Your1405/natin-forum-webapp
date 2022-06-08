@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class UserType extends Model
 {
     use HasFactory;
 
-    protected $table = 'user';
+    protected $table = "user_type";
 
     protected $timestamps = false;
 }
