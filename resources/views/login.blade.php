@@ -21,9 +21,9 @@
                 </div>
                 <form id="login" class="inputbox" method="POST" action="/login">
                     @csrf
-                    @if ($loginError == 'userDoesNotExist')
-                        <p style="color: red;" >Gebruiker bestaat niet</p> 
-                    @elseif($loginError == 'passwordIncorrect')
+                    @if ($loginError == 'username')
+                        <p style="color: red;" >Credentials don't match</p> 
+                    @elseif($loginError == 'password')
                         <p style="color: red;" >Password is incorrect</p> 
                     @endif
                     <input type="text" class="inputfield" placeholder="Username" name="username" id="username" required>
