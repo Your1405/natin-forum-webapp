@@ -22,13 +22,13 @@
                 <form id="login" class="inputbox" method="POST" action="/login">
                     @csrf
                     @if ($loginError == 'userDoesNotExist')
-                        <p style="color: red;" >User doesn't exist</p> 
+                        <p style="color: red;" >Gebruiker bestaat niet</p> 
                     @elseif($loginError == 'passwordIncorrect')
                         <p style="color: red;" >Password is incorrect</p> 
                     @endif
                     <input type="text" class="inputfield" placeholder="Username" name="username" id="username" required>
                     <input type="password" class="inputfield" placeholder="Password" name="password" id="password" required>
-                    <button type="submit" class="submitbutton" value="Inloggen">Log in</button>
+                    <button type="submit" class="submitbutton" value="Inloggen">Inloggen</button>
                 </form>
                 <form id="register" class="inputbox" method="POST" action="/register">
                     @csrf
@@ -36,7 +36,7 @@
                     <input type="email" class="inputfield" placeholder="Email" name="email" id="email" required>
                     <input type="password" class="inputfield" placeholder="Password" name="password" id="password" required>
                     <input type="password" class="inputfield" placeholder="Repeat Password" name="repeat-password" id="repeat-password" required>
-                    <button type="submit" class="submitbutton" value="Inloggen">Register</button>
+                    <button type="submit" class="submitbutton" value="Inloggen">Registreer</button>
                 </form>
             </div>    
         </div>
