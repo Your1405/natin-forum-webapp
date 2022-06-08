@@ -17,7 +17,9 @@ class UserTypeFactory extends Factory
     public function definition()
     {
         return [
-            
+            ['userTypeDescription' => 'Student'],
+            ['userTypeDescription' => 'Docent'],
+            ['userTypeDescription' => 'Moderator']
         ];
     }
 }
