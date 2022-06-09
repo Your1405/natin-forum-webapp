@@ -6,15 +6,23 @@
 
 
 
+<<<<<<< Updated upstream
 .login-container {
     width: 100%;
     height: 100%;
     background-image: linear-gradient(rgba(9, 37, 20, 0.4),rgba(11, 124, 77, 0.4)),url('/storage/images/3333.jpg');
+=======
+.pagebackg {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('/storage/images/natinstuds.jpg');
+>>>>>>> Stashed changes
     background-position: center;
     position: absolute;
     background-size: cover;
 }
 
+<<<<<<< Updated upstream
 .loginbox{
     width: 60em;
     height: 35em;
@@ -22,11 +30,21 @@
     margin: 6% auto;
     background: #C4C4C4;
     padding: 5px;
+=======
+.registerbox{
+    width: 22em;
+    height: 25em;
+    position: relative;
+    margin: 6% auto;
+    background: #DDD;
+    padding: 1em;
+>>>>>>> Stashed changes
     overflow: hidden;
     
 
 }
 
+<<<<<<< Updated upstream
 .natinlogo{
     margin: 10px auto;
     text-align: center;
@@ -50,6 +68,23 @@
     width: 280px;
     transition: .5s;
     margin-left: 32em;
+=======
+div{
+    display: block;
+    margin-top: 2em;
+}
+
+label{
+    display: block;
+    margin-top: 1em;
+    margin-bottom: .2em;
+}
+.inputbox{
+    top: 250px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+>>>>>>> Stashed changes
 }
 
 .inputfield{
@@ -65,6 +100,7 @@
 }
 
 .submitbutton{
+<<<<<<< Updated upstream
     position: relative;
     top: 2em;
     width: 40%;
@@ -85,3 +121,37 @@
 #register{
     left: 450px;
 }
+=======
+   
+    margin-top: 3em;
+    position: relative;
+ 
+}
+
+h4{
+    display: block;
+    padding-top: 1em;
+    position: relative;
+    text-align: center;
+}
+
+.logregbutton{
+    border: none;
+    background: linear-gradient(#10370F,#52B92D);
+    padding: 12px 30px;
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    transition: .4s; 
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logregbutton:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+>>>>>>> Stashed changes
