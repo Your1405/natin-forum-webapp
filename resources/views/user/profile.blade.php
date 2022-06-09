@@ -7,7 +7,8 @@
     <title>NATIN Forum | Profiel van {{ $userInfo['username'] }}</title>
 </head>
 <body>
-    <h1>Profiel van: {{ $userInfo['username'] }}
+    <a href="/home">Terug naar home</a>
+    <h1>Profiel van: {{ $userInfo['username'] }} </h1>
     <main>
         <div>
             <p><b>Username: </b></p>
@@ -33,6 +34,8 @@
             <p><b>Over mij: </b></p>
             <p>{{ $userInfo['userBio'] }}</p>
         </div>
+        <a href="/user/edit">Gebruikers gegevens bewerken</a>
+        <a href="/user/delete">Verwijder account</a>
     </main>
 </body>
 </html>
