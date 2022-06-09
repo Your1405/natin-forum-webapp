@@ -1,7 +1,114 @@
-body {
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+
+
+.pagebackg{
     width: 100%;
-    min-height: 100vh;
-    background-image: linear-gradient(#B89E77, #d0d3ce);
-    position: relative;
+    height: 100%;
+    background-image: linear-gradient(rgba(9, 37, 20, 0.4),rgba(11, 124, 77, 0.4)),url('/storage/images/3333.jpg');
+    background-position: center;
+    position: absolute;
     background-size: cover;
+}
+
+.registerbox{
+    width: 22em;
+    height: 37em;
+    position: relative;
+    margin: 6% auto;
+    background: #DDD;
+    padding: 2em;
+    overflow: hidden;
+    border-radius: .2em;
+
+}
+
+input{
+    border-radius: .5em;
+    font-size: 1em;
+    
+}
+
+select{
+    border-radius: .5em;
+    font-size: 1em;
+}
+
+div{
+    display: block;
+    margin-top: 1em;
+}
+
+label{
+    display: block;
+    margin-top: 1.5em;
+    margin-bottom: .2em;
+    font-weight: bold;
+}
+.inputbox{
+    top: 250px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+}
+
+.inputfield{
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+}
+
+.submitbutton{
+   
+    margin-top: 3em;
+    position: relative;
+ 
+}
+
+h3{
+    color: #006d00;
+    display: block;
+    padding-top: 1em;
+    position: relative;
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+.logregbutton{
+    display: block;
+    border: none;
+    background: linear-gradient(#10370F,#52B92D);
+    padding: 12px 30px;
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    transition: .4s; 
+    position: relative;
+    left: 5em;
+    top: 2em;
+}
+
+.logregbutton:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+textarea{
+    width: 100%;
+height: 13em;
+}
+
+.usernamecolor{
+    text-decoration: underline;
 }
