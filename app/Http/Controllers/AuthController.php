@@ -41,10 +41,14 @@ class AuthController extends Controller
                 ]);
             }
         } else if($request->isMethod('get')){
-            return view('login', [
-                'registerError'=>null,
-                'loginError'=>null
-            ]);
+            if($request->session()->has('isLoggedIn')){
+                return redirect('/home');
+            } else {   
+                return view('login', [
+                    'registerError'=>null,
+                    'loginError'=>null
+                ]);
+            }
         }
     } 
 

@@ -20,6 +20,7 @@
                 <li><a href="#">Discussies</a></li>
                 <li><a href="#">Suggesties</a></li>
                 <li><a href="#">Info</a></li>
+                <li><a href="/user/profile">Profiel</a></li>
             </ul>
             <a class="new-post-btn" href="/post/new">New Post</a>
             <a href="/logout" class="logregbutton">Uitloggen</a>

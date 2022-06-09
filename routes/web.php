@@ -30,6 +30,7 @@ Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/user/new', [PageController::class, 'newUser']);
 Route::post('/user/new', [PageController::class, 'newUser']);
+Route::get('/user/profile', [PageController::class, 'userProfile']);
 
 Route::get('/post/new', [PostController::class, 'newPost']);
 

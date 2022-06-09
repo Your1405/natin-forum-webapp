@@ -56,5 +56,32 @@ class PageController extends Controller
         }
     }
 
-    
+    function userProfile(Request $request){
+
+        $userId = $request->session()->get('userId');
+
+        $userInfo = DB::table('user_info')
+        ->join('user', 'user_info.userId', '=', 'user.userId')
+        ->join('user_type', 'user_info.userType', '=', 'user_type.userTypeId')
+        ->join('geslacht', 'user_info.geslacht', '=', 'geslacht.geslachtId')
+        ->select('user.username', 'user.email', 'user_info.geboorteDatum', 'geslacht.geslachtBeschrijving', 'user_type.userTypeDescription', 'user_info.userBio')
+        ->where('user.userId', '=', $userId)
+        ->get()->toArray();
+
+        $userInfoArray = json_decode(json_encode($userInfo[0]), true);
+        
+        /*
+            SELECT user.username, user.email, user_info.geboorteDatum, geslacht.geslachtBeschrijving, user_type.userTypeDescription, user_info.userBio 
+            FROM user_info
+                INNER JOIN user ON user.userId
+                INNER JOIN user_type ON user_info.userType = user_type.userTypeId
+                INNER JOIN geslacht ON user_info.geslacht = geslacht.geslachtId
+            WHERE user.userId = 1
+        */
+
+        return view('user.profile', [
+            'userid' => $userId,
+            'userInfo' => $userInfoArray
+        ]);
+    }
 }

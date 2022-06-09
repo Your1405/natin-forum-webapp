@@ -10,6 +10,6 @@ use Database\Seeders\UserTypeSeeder;
 
 class DatabaseSeeder extends Seeder {
     public function run(){
-        $this->call(UserTypeSeeder::class);
+        $this->call([UserTypeSeeder::class, GeslachtSeeder::class]);
     }
 }
