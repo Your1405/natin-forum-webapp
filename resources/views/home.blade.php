@@ -20,15 +20,14 @@
                 <li><a href="#">Discussies</a></li>
                 <li><a href="#">Suggesties</a></li>
                 <li><a href="#">Info</a></li>
+                <li><a href="/user/profile">Profiel</a></li>
             </ul>
-            <form method="GET" action="/newpost">
-            <button type="submit">New Post</button>
-            </form>
+            <a class="new-post-btn" href="/post/new">New Post</a>
             <a href="/logout" class="logregbutton">Uitloggen</a>
         </nav>
     </div>
     <main>
-        <p>user id: {{ $userId }}</p>
+        <h1>Posts</h1>
     </main>
 </body>
 </html>

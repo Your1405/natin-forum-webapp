@@ -8,6 +8,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 
+use App\Models\User;
+
 class AuthController extends Controller
 {
     function login(Request $request){
@@ -15,17 +17,38 @@ class AuthController extends Controller
             $username = $request->input('username');
             $password = $request->input('password');
 
-            if($username == 'your1405'){
-                if($password == 'password'){
-                    return redirect('home');
+            $userInfo = DB::table('user')->select('*')->where('username', '=', $username)->get()->toArray();
+            if(sizeof($userInfo) > 0) {
+                $userInfoArray = json_decode(json_encode($userInfo[0]), true);
+                if(Hash::check($password, $userInfoArray['password'])){
+
+                    $request->session()->put([
+                        'userId'=>$userInfoArray['userId'], 
+                        'isLoggedIn'=>true
+                    ]);
+
+                    return redirect('/home');
                 } else {
-                    return view('login', ['loginError'=>'password']);
+                    return view('login', [
+                        'registerError'=>null,
+                        'loginError'=>'passwordIncorrect'
+                    ]);
                 }
             } else {
-                return view('login', ['loginError'=>'username']);
+                return view('login', [
+                    'registerError'=>null,
+                    'loginError'=>'userDoesNotExist'
+                ]);
             }
         } else if($request->isMethod('get')){
-            return view('login', ['loginError'=>null]);
+            if($request->session()->has('isLoggedIn')){
+                return redirect('/home');
+            } else {   
+                return view('login', [
+                    'registerError'=>null,
+                    'loginError'=>null
+                ]);
+            }
         }
     } 
 
@@ -39,30 +62,55 @@ class AuthController extends Controller
             $repeatPassword = $userInput['repeat-password'];
             $currentTime = Carbon::now()->toDateTimeString();
 
-            if($password != $repeatPassword){
-                return view('login', ['register-error'=>'nonMatchingPasswords']);
+            $existingUser = DB::table('user')->select(['userId','username', 'email'])
+            ->where('username', '=', $username)
+            ->orWhere('email', '=', $email)
+            ->get()
+            ->toArray();
+
+            $existingUserArray = json_decode(json_encode($existingUser), true);
+            if(sizeof($existingUserArray) != 0){
+                return view('login', [
+                    'registerError'=>'userAlreadyExists',
+                    'loginError'=>null
+                ]);
             } else {
-                $encryptPassword = Hash::make($password);
-                DB::table('user')->insert([
-                    'username'=>$username,
-                    'email'=>$email,
-                    'password'=>$encryptPassword,
-                    'accountCreated'=>$currentTime,
-                    'accountStatus'=>1
-                ]);
+                if($password != $repeatPassword){
+                    return view('login', [
+                        'loginError'=>null, 
+                        'registerError'=>'nonMatchingPasswords'
+                    ]);
+                } else {
+                    $encryptPassword = Hash::make($password);
+                    DB::table('user')->insert([
+                        'username'=>$username,
+                        'email'=>$email,
+                        'password'=>$encryptPassword,
+                        'accountCreated'=>$currentTime,
+                        'accountStatus'=>1
+                    ]);
+    
+                    $userIdArray = DB::table('user')->select(['userId','username', 'email'])
+                    ->where('username', '=', $username)
+                    ->orWhere('email', '=', $email)
+                    ->get()
+                    ->toArray();
 
-                $userIdCollection = DB::table('user')->select('userId')->where('username', '=', $username)->get();
-                $userId = json_decode(json_encode($userIdCollection->toArray()[0]), true);
-                var_dump($userId);
-                session([
-                    'isLoggedIn'=>true,
-                    'userId'=>$userId['userId']
-                ]);
+                    $userId = json_decode(json_encode($userIdArray[0]), true);
 
-                return redirect('/home'); 
+                    session([
+                        'isLoggedIn'=>true,
+                        'userId'=>$userId['userId']
+                    ]);
+    
+                    return redirect('/user/new'); 
+                }
             }
         } else if($request->isMethod('get')){
-            return view('register', ['registerError'=>null]);
+            return view('register', [
+                'loginError'=>null, 
+                'registerError'=>null
+            ]);
         }
     }
 

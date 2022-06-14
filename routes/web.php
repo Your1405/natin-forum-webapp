@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +29,17 @@ Route::get('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
-Route::get('/new/user', [PageController::class, 'newUser']);
-Route::get('/new/post');
+Route::get('/user/new', [PageController::class, 'newUser']);
+Route::post('/user/new', [PageController::class, 'newUser']);
+
+Route::get('/user/edit', [UserController::class, 'editUser']);
+Route::post('/user/edit', [UserController::class, 'editUser']);
+
+Route::get('/user/delete', [UserController::class, 'deleteUser']);
+Route::post('/user/delete', [UserController::class, 'deleteUser']);
+
+Route::get('/user/profile', [PageController::class, 'userProfile']);
+
+Route::get('/post/new', [PostController::class, 'newPost']);
 
 Route::get('/logout', [AuthController::class, 'logout']);

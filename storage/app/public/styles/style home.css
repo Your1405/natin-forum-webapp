@@ -8,7 +8,7 @@
 
 .hero {
     width: 100%;
-    min-height: 100vh;
+    min-height: 12rem;
     background-image: linear-gradient(#B89E77, #d0d3ce);
     background-size: cover;
     background-position: center;
@@ -55,10 +55,12 @@ nav ul li a:hover{
     transition: .3s;
 }
 
-button{
+.new-post-btn {
     border: none;
     background: #BE0E0E;
+    white-space: nowrap;
     padding: 12px 30px;
+    margin-right: .5em;
     border-radius: 30px;
     color: white;
     font-weight: bold;
@@ -66,7 +68,7 @@ button{
     transition: .4s; 
 }
 
-button:hover{
+.new-post-btn:hover{
     transform: scale(1.2);
     cursor: pointer;
 }
