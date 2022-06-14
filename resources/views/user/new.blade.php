@@ -11,8 +11,7 @@
     <main>
         <div class="pagebackg">
             <div class="registerbox">
-            
-             <h3>Welkom op de NATIN Forum, <div class="usernamecolor">{{ $username->username }}</div></h3>
+             <h3>Welkom op het NATIN Forum, <div class="usernamecolor">{{ $username->username }}</div></h3>
              <form action="/user/new" method="POST">
                 @csrf
                 <label for="geboorteDatum">Geboorte Datum</label>
@@ -25,7 +24,7 @@
                     <option value="3">Liever niet zeggen</option>
                 </select>
                 <br>
-               <label for="userType">Student of Docent</label>
+               <label for="userType">Student of Docent?</label>
                <select name="userType">
                 <option value="1">Student</option>
                 <option value="2">Docent</option>

@@ -4,9 +4,7 @@
     font-family: sans-serif;
 }
 
-
-
-.pagebackg{
+.pagebackg {
     width: 100%;
     height: 100%;
     background-image: linear-gradient(rgba(9, 37, 20, 0.4),rgba(11, 124, 77, 0.4)),url('/storage/images/3333.jpg');
