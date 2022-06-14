@@ -11,8 +11,7 @@
     <main>
         <div class="pagebackg">
             <div class="registerbox">
-            
-             <h4>Welkom op de NATIN Forum, {{ $username->username }}</h4>
+             <h3>Welkom op het NATIN Forum, <div class="usernamecolor">{{ $username->username }}</div></h3>
              <form action="/user/new" method="POST">
                 @csrf
                 <label for="geboorteDatum">Geboorte Datum</label>
