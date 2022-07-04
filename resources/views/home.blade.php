@@ -28,6 +28,12 @@
     </div>
     <main>
         <h1>Posts</h1>
+        @if($posts == null)
+            <p>Er zijn geen enkele posts.</p>
+            <a href="/post/new">Maak een nieuwe</a>
+        @else
+
+        @endif
     </main>
 </body>
 </html>

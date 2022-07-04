@@ -22,9 +22,9 @@
                 <form id="login" class="inputbox" method="POST" action="/login">
                     @csrf
                     @if ($loginError == 'userDoesNotExist')
-                        <p style="color: red;" >User doesn't exist</p> 
+                        <p style="color: red;" >Gebruiker bestaat niet</p> 
                     @elseif($loginError == 'passwordIncorrect')
-                        <p style="color: red;" >Password is incorrect</p> 
+                        <p style="color: red;" >Wachtwoord is incorrect</p> 
                     @endif
                     <input type="text" class="inputfield" placeholder="Username" name="username" id="username" required>
                     <input type="password" class="inputfield" placeholder="Password" name="password" id="password" required>
@@ -32,6 +32,11 @@
                 </form>
                 <form id="register" class="inputbox" method="POST" action="/register">
                     @csrf
+                    @if($registerError == 'userAlreadyExists')
+                        <p style="color: red;" >Gebruiker bestaat al</p> 
+                    @elseif($registerError == 'nonMatchingPasswords')
+                        <p style="color: red;" >Wachtwoorden komen niet overeen. Probeer opnieuw</p> 
+                    @endif
                     <input type="text" class="inputfield" placeholder="Username" name="username" id="username" required>
                     <input type="email" class="inputfield" placeholder="Email" name="email" id="email" required>
                     <input type="password" class="inputfield" placeholder="Password" name="password" id="password" required>

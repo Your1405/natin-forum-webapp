@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('postBeschrijving');
             $table->bigInteger('postAuteur');
             $table->timestamp('postTijd');
+            $table->timestamp('postUpdateTijd');
             $table->bigInteger('postCategorie');
             $table->char('postStatus');
 

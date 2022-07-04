@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use App\Models\Post;
 
 class PageController extends Controller
 {
@@ -14,10 +15,17 @@ class PageController extends Controller
             $userId = $request->session()->get('userId');
             $userLoggedIn = $request->session()->get('isLoggedIn', false);
             
+//             SELECT post.postId, post.postTitel, post.postBeschrijving, postAuteur, user.username, post.postTijd, categorie.categorieBeschrijving 
+// 	               FROM post
+// 	                INNER JOIN user ON post.postAuteur = user.userId
+// 	                INNER JOIN categorie ON categorie.categorieId = postCategorie
+//                  WHERE post.postStatus <> 2
+
             if($userLoggedIn){
                 return view('home', [
                     'userId'=>$userId,
-                    'isLoggedIn'=>$userLoggedIn
+                    'isLoggedIn'=>$userLoggedIn,
+                    'posts'=>null
                 ]);
             } else {
                 return redirect('/login');
