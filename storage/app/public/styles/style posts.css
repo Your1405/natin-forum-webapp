@@ -1,0 +1,147 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    
+}
+
+.hero {
+    width: 100%;
+    min-height: 12rem;
+    background-image: linear-gradient(#B89E77, #d0d3ce);
+    background-size: cover;
+    background-position: center;
+    background-size: 100%;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 40px;
+    padding-left: 10%;
+    padding-right: 10%;
+
+}
+
+.logo{
+    color: #18411d;
+    font-size: 28px;
+    padding-right: 40px;
+}
+
+img{
+    width: 80px;
+}
+
+span{
+    color: white;
+}
+nav ul li{
+    list-style-type: none;
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+nav ul li a{
+    color: #18411d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover{
+    color: #5DA132;
+    transition: .3s;
+}
+
+.new-post-btn {
+    border: none;
+    background: #BE0E0E;
+    white-space: nowrap;
+    padding: 12px 30px;
+    margin-right: .5em;
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    transition: .4s; 
+}
+
+.gebruikte-new-post-btn {
+    border: none;
+    background: #ffffff;
+    white-space: nowrap;
+    padding: 12px 30px;
+    margin-right: .5em;
+    border-radius: 30px;
+    color: #BE0E0E;
+    font-weight: bold;
+    font-size: 15px;
+    transition: .4s; 
+}
+
+.new-post-btn:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.gebruikte-new-post-btn:hover{
+    cursor: not-allowed;
+}
+
+.logregbutton{
+    border: none;
+    background: linear-gradient(#10370F,#52B92D);
+    padding: 12px 30px;
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    transition: .4s; 
+}
+
+.logregbutton:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+header{
+    line-height: 3;
+    margin-left: 2em;
+}
+
+/* .titel-text{
+
+} */
+
+.main-posts-new{
+    width: 75%;
+    background-color: #d0d3ce;
+    border-radius: .5em;
+    margin-left: 2em;
+    padding: 1em;
+}
+
+.textarea-inhoud{
+    width: 100%;
+    border-radius: .5em;
+}
+
+.maak-post-button{
+    border: none;
+    background: linear-gradient(#10370F,#52B92D);
+    padding: 12px 30px;
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    transition: .4s; 
+    position: fixed;
+    left: 10%;
+}
+
+.maak-post-button:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
