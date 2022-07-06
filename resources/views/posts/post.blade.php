@@ -1,3 +1,7 @@
+@php
+    use Carbon\Carbon;
+    $timePosted = Carbon::createFromTimeStamp(strtotime($postInfo['postTijd']))->diffForHumans();
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +16,7 @@
         <div>
             <pre>{{ $postInfo['postBeschrijving'] }}</pre>
             <p>Post Auteur: <a href="/user/profile/{{ $postInfo['postAuteur'] }}">{{ $postInfo['username'] }}</a></p>
-            <p>Gemaakt om: {{ $postInfo['postTijd'] }}</p>
+            <p>Gemaakt om: {{ $postInfo['postTijd'] }} ({{ $timePosted }})</p>
             <p>Categorie: {{ $postInfo['categorieBeschrijving']}}</p>
         </div>
         <a href="/home">Terug naar home</a>

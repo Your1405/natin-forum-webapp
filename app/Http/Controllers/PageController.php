@@ -15,17 +15,33 @@ class PageController extends Controller
             $userId = $request->session()->get('userId');
             $userLoggedIn = $request->session()->get('isLoggedIn', false);
             
-//             SELECT post.postId, post.postTitel, post.postBeschrijving, postAuteur, user.username, post.postTijd, categorie.categorieBeschrijving 
-// 	               FROM post
-// 	                INNER JOIN user ON post.postAuteur = user.userId
-// 	                INNER JOIN categorie ON categorie.categorieId = postCategorie
-//                  WHERE post.postStatus <> 2
+        //             SELECT post.postId, post.postTitel, post.postBeschrijving, postAuteur, user.username, post.postTijd, categorie.categorieBeschrijving 
+        // 	               FROM post
+        // 	                INNER JOIN user ON post.postAuteur = user.userId
+        // 	                INNER JOIN categorie ON categorie.categorieId = postCategorie
+        //                  WHERE post.postStatus <> 2
 
             if($userLoggedIn){
+                $posts = DB::table('post')
+                ->join('user', 'post.postAuteur', '=', 'user.userId')
+                ->join('categorie', 'categorie.categorieId', '=', 'post.postCategorie')
+                ->select('post.postId', 'post.postTitel', 'post.postBeschrijving', 'post.postAuteur', 'user.username', 'post.postTijd', 'categorie.categorieBeschrijving')
+                ->where('post.postStatus', '<>', 2)
+                ->orderByDesc('post.postTijd')
+                ->get();
+
+                if($posts->count() == 0){
+                    return view('home', [
+                        'userId'=>$userId,
+                        'isLoggedIn'=>$userLoggedIn,
+                        'posts'=> null
+                    ]);
+                }
+
                 return view('home', [
                     'userId'=>$userId,
                     'isLoggedIn'=>$userLoggedIn,
-                    'posts'=>null
+                    'posts'=>$posts
                 ]);
             } else {
                 return redirect('/login');
@@ -91,5 +107,41 @@ class PageController extends Controller
             'userid' => $userId,
             'userInfo' => $userInfoArray
         ]);
+    }
+
+    function viewUser(Request $request, $id){
+
+        $userId = $request->session()->get('userId');
+
+        $userInfo = DB::table('user_info')
+        ->join('user', 'user_info.userId', '=', 'user.userId')
+        ->join('user_type', 'user_info.userType', '=', 'user_type.userTypeId')
+        ->join('geslacht', 'user_info.geslacht', '=', 'geslacht.geslachtId')
+        ->select('user.username', 'user.email', 'user_info.geboorteDatum', 'geslacht.geslachtBeschrijving', 'user_type.userTypeDescription', 'user_info.userBio')
+        ->where('user.userId', '=', $id)
+        ->get()->toArray();
+
+        $userInfoArray = json_decode(json_encode($userInfo[0]), true);
+        
+        /*
+            SELECT user.username, user.email, user_info.geboorteDatum, geslacht.geslachtBeschrijving, user_type.userTypeDescription, user_info.userBio 
+            FROM user_info
+                INNER JOIN user ON user.userId
+                INNER JOIN user_type ON user_info.userType = user_type.userTypeId
+                INNER JOIN geslacht ON user_info.geslacht = geslacht.geslachtId
+            WHERE user.userId = 1
+        */ 
+
+        if($userId == $id){
+            return view('user.profile', [
+                'userid' => $id,
+                'userInfo' => $userInfoArray
+            ]);
+        } else {
+            return view('user.profile', [
+                'userid' => null,
+                'userInfo' => $userInfoArray
+            ]); 
+        }
     }
 }

@@ -88,3 +88,16 @@ nav ul li a:hover{
     transform: scale(1.2);
     cursor: pointer;
 }
+
+.post {
+    margin: 1em 2em;
+    background-color: #EEE;
+    padding: .5em;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+
+.post a {
+    text-decoration: none;
+    color: black;
+}

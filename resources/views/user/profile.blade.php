@@ -34,8 +34,11 @@
             <p><b>Over mij: </b></p>
             <p>{{ $userInfo['userBio'] }}</p>
         </div>
-        <a href="/user/edit">Gebruikers gegevens bewerken</a>
-        <a href="/user/delete">Verwijder account</a>
+
+        @if($userid)
+            <a href="/user/edit">Gebruikers gegevens bewerken</a>
+            <a href="/user/delete">Verwijder account</a>
+        @endif
     </main>
 </body>
 </html>

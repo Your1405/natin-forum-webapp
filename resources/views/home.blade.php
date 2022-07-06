@@ -1,3 +1,6 @@
+@php
+    use Carbon\Carbon;
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +35,9 @@
             <p>Er zijn geen enkele posts.</p>
             <a href="/post/new">Maak een nieuwe</a>
         @else
-
+            @foreach ($posts as $post)
+                @include('postoverzicht')
+            @endforeach
         @endif
     </main>
 </body>
