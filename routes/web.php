@@ -44,5 +44,7 @@ Route::get('/user/profile/{id}', [PageController::class, 'viewUser'])->where(['i
 Route::get('/post/new', [PostController::class, 'newPost']);
 Route::post('/post/new', [PostController::class, 'newPost']);
 Route::get('/post/{id}', [PostController::class, 'viewPost'])->where(['id'=>'[0-9]+']);
+Route::get('/post/{id}/delete', [PostController::class, 'deletePost'])->where(['id'=>'[0-9]+']);
+Route::delete('/post/{id}/delete', [PostController::class, 'deletePost'])->where(['id'=>'[0-9]+']);
 
 Route::get('/logout', [AuthController::class, 'logout']);

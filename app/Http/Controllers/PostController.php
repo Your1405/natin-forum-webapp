@@ -59,4 +59,26 @@ class PostController extends Controller
                     INNER JOIN categorie ON categorie.categorieId = postCategorie
         */
     }
+
+    function deletePost(Request $request, $id){
+        $userId = $request->session()->get('userId');
+
+        $post = Post::find($id);
+        if($request->isMethod('DELETE')){
+            if($post->postAuteur == $userId){
+                if($request->get('selection') == 1){
+                    $post->delete();
+                    return redirect("/home");
+                } else {
+                    return redirect("/post/$id");
+                }
+            } else {
+                return redirect("/post/$id");
+            }
+        } else if($request->isMethod('GET')){
+            return view('posts.deleteconfirm', [
+                "postId" => $id
+            ]);
+        }
+    }
 }

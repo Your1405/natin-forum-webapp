@@ -19,6 +19,9 @@
             <p>Gemaakt om: {{ $postInfo['postTijd'] }} ({{ $timePosted }})</p>
             <p>Categorie: {{ $postInfo['categorieBeschrijving']}}</p>
         </div>
+        @if($userId == $postInfo['postAuteur'])
+            <a href="/post/{{$postId}}/delete">Verwijder post</a>
+        @endif
         <a href="/home">Terug naar home</a>
     </article>
 </body>
